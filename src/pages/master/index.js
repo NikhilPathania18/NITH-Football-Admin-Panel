@@ -1,0 +1,15 @@
+export { default as CreateAddons } from "./CreateTeam";
+export { default as Dashboard } from "./Dashboard";
+export { default as ForgotPassword } from "./ForgotPassword";
+export { default as InvoiceDetails } from "./InvoiceDetails";
+export { default as InvoiceList } from "./InvoiceList";
+export { default as Login } from "./Login";
+export { default as MyAccount } from "./MyAccount";
+export { default as OrderList } from "./OrderList";
+export { default as TripList } from "./PlayerList";
+export { default as AddPlayer } from "./AddPlayer";
+export { default as TripView } from "./PlayerDetails";
+export { default as Register } from "./Register";
+export { default as Settings } from "./Settings";
+export { default as UserList } from "./UserList";
+export { default as UserProfile } from "./UserProfile";

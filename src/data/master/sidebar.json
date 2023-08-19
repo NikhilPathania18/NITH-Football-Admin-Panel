@@ -1,0 +1,44 @@
+{
+    "navs": [
+        {
+            "title": "master",
+            "menu": [
+                
+                { 
+                    "icon": "person", 
+                    "text": "player",
+                    "submenu": [
+                        { "href": "/player-list", "text": "Players list" },
+                        { "href": "/add-player", "text": "Add player" }
+                    ]
+                },
+                { 
+                    "icon": "emoji_events", 
+                    "text": "tournament",
+                    "submenu": [
+                        { "href": "/tournaments-list", "text": "Tournaments list" },
+                        { "href": "/new-tournament", "text": "New Tournament" }
+                    ]
+                },
+                { 
+                    "icon": "groups", 
+                    "text": "teams",
+                    "submenu": [
+                        { "href": "/teams-list", "text": "Teams list" },
+                        { "href": "/create-team", "text": "create team" }
+                    ]
+                },
+                
+                { 
+                    "icon": "sports_soccer", 
+                    "text": "matches",
+                    "submenu": [
+                        { "href": "/matches-list", "text": "matches list" },
+                        { "href": "/new-match", "text": "new match"}
+                    ]
+                }
+            ]
+        }
+    ]
+
+}

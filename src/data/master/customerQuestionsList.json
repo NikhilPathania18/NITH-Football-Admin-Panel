@@ -1,0 +1,54 @@
+{
+    "pageTitle": "customer messages",
+    "breadcrumb": [
+        { "path": "/", "text": "home" },
+        { "text": "messages" },
+        { "text": "list" }
+    ],
+    "dotsMenu": {
+        "dots": "more_horiz",
+        "dropdown": [
+            { "icon": "edit", "text": "edit" },
+            { "icon": "delete", "text": "delete" },
+            { "icon": "download", "text": "download" }
+        ]
+    },
+    "float": [
+        { "title": "total products", "digit": "547", "icon": "shopping_bag", "variant": "lg blue" }, 
+        { "title": "total categories", "digit": "605", "icon": "widgets", "variant": "lg green" },
+        { "title": "total barnds", "digit": "249", "icon": "verified_user", "variant": "lg purple" }
+    ],
+    "trip": {
+        "filter":[
+            { "label": "show by", "option": ["12 row", "24 row", "36 row"] },
+            { "label": "rating by", "option": ["1 star", "2 star", "3 star", "4 star", "5 star"] },
+            { "label": "category by", "option": ["mans", "womans", "kids", "accessory"] },
+            { "label": "brand by", "option": ["ecstasy", "freeland", "rongdhonu"] }
+        ],
+        "thead": ["name", "email", "message", "is replied", "is seen", "messaged on", "action"],
+        "tbody": [
+            {
+                "src": "images/trip/01.webp",
+                "alt": "scart",
+                "heading": "Tops and skirt set for Female", 
+                "descrip": "Women's exclusive summer Tops and skirt set for Female Tops and skirt set", 
+                "category": "womans",
+                "brand": "richman",
+                "price": { "present": "$19.00", "previous": "$21.00" },
+                "stock": "30",
+                "order": "380"
+            },
+            {
+                "src": "images/trip/02.webp",
+                "alt": "scart",
+                "heading": "Leather belt steve madden men's", 
+                "descrip": "Steve madden men's dress casual cvery cay ceather belt", 
+                "category": "mans",
+                "brand": "lubana",
+                "price": { "present": "$14.00" },
+                "stock": "23",
+                "order": "189"
+            }
+        ]
+    }
+}

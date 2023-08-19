@@ -1,0 +1,19 @@
+{
+    "pageTitle": "add boat",
+    "breadcrumb": [
+        { "path": "/", "text": "home" },
+        { "text": "boat" },
+        { "text": "add" }
+    ],
+    "title": "add new boat",
+    "button": { "path": "#", "icon": "visibility", "text": "show all boats" },
+    "dotsMenu": {
+        "dots": "more_horiz",
+        "dropdown": [
+            { "icon": "edit", "text": "edit" },
+            { "icon": "delete", "text": "delete" },
+            { "icon": "download", "text": "download" }
+        ]
+    }
+    
+}

@@ -1,0 +1,37 @@
+
+html{
+    /* background-color: #000; */
+}
+body {
+  padding: 10px;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+  /* display: flex; 
+    flex-direction: column;  */
+    /* background-image: url('/public/images/ocealics_logo.jpg');
+    background-size: contain;
+    background-repeat: no-repeat; */
+  background-color: yellow;
+}
+
+.container {
+  background-color: aqua;
+  /* height: 100%; */
+  display: flex;
+  flex-direction: column;
+  /* justify-content: end; */
+}
+
+.div1 {
+  /* min-height: 300px; */
+  /* height: 150px; */
+  background-color: red;
+}
+
+.div2 {
+  /* min-height: 200px; */
+  /* flex-grow: 1; */
+  height: 100%;
+  background-color: blue;
+}

@@ -1,0 +1,98 @@
+{
+    "navs": [
+        {
+            "title": "master",
+            "menu": [
+                { 
+                    "icon": "dashboard", 
+                    "text": "dashboard",
+                    "href": "/"
+                },
+                { 
+                    "icon": "account_circle", 
+                    "text": "users", 
+                    "submenu": [
+                        { "href": "/user-list", "text": "user list" },
+                        { "href": "/user-profile", "text": "user profile" },
+                        { "href": "/my-account", "text": "my account" }
+                    ]
+                },
+                { 
+                    "icon": "pix", 
+                    "text": "bookings",
+                    "href" : "/bookings"
+                },
+                { 
+                    "icon": "person", 
+                    "text": "player",
+                    "submenu": [
+                        { "href": "/player-list", "text": "Players list" },
+                        { "href": "/add-player", "text": "Add player" }
+                    ]
+                },
+                { 
+                    "icon": "emoji_events", 
+                    "text": "tournament",
+                    "submenu": [
+                        { "href": "/tournaments-list", "text": "Tournaments list" },
+                        { "href": "/new-tournament", "text": "New Tournament" }
+                    ]
+                },
+                { 
+                    "icon": "groups", 
+                    "text": "teams",
+                    "submenu": [
+                        { "href": "/teams-list", "text": "Teams list" },
+                        { "href": "/create-team", "text": "create team" }
+                    ]
+                },
+                { 
+                    "icon": "image", 
+                    "text": "gallery",
+                    "href": "/gallery"
+                },
+                { 
+                    "icon": "sports_soccer", 
+                    "text": "matches",
+                    "submenu": [
+                        { "href": "/matches-list", "text": "matches list" },
+                        { "href": "/new-match", "text": "new match"}
+                    ]
+                },
+                { 
+                    "icon": "quiz", 
+                    "text": "faqs",
+                    "submenu": [
+                        { "href": "/faqs-list", "text": "faqs list" },
+                        { "href": "/faqs", "text": "create faq"}
+                    ]
+                },
+                { 
+                    "icon": "attach_money", 
+                    "text": "promos",
+                    "submenu": [
+                        { "href": "/promos-list", "text": "promos list" },
+                        { "href": "/create-promo", "text": "create promo"}
+                    ]
+                },
+                {
+                    "icon": "chat",
+                    "text": "Customer Messages",
+                    "href": "/customer-questions"
+                },
+                { 
+                    "href": "/settings",
+                    "icon": "settings", 
+                    "text": "CMS" 
+                },
+                { 
+                    "href": "/about-us",
+                    "icon": "group", 
+                    "text": "about us" 
+                }
+                
+            ]
+        }
+    ]
+
+}
