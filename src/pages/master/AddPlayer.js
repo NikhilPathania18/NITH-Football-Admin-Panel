@@ -71,8 +71,8 @@ export default function AddPlayer() {
       const playerData = new FormData();
       playerData.append('name',form.name)
       playerData.append('rollNo',form.rollNo)
-      if(form.endYear.length!==0) playerData.append('branch',form.branch)
-      if(form.endYear.length!==0) playerData.append('startYear',form.startYear)
+      if(form.branch.length!==0) playerData.append('branch',form.branch)
+      if(form.startYear.length!==0) playerData.append('startYear',form.startYear)
       if(form.endYear.length!==0) playerData.append('endYear',form.endYear)
       playerData.append('matches',form.matches)
       playerData.append('goals',form.goals)

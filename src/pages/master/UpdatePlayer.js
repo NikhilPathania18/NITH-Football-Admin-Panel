@@ -49,7 +49,7 @@ export default function UpdatePlayer() {
       endYear: '',
       matches: 0,
       goals: 0,
-      assists: 0,
+      assists: 0, 
       position: 'striker',
       yellowCards: 0,
       redCards: 0
@@ -75,9 +75,9 @@ export default function UpdatePlayer() {
       const playerData = new FormData();
       playerData.append('name',form.name)
       playerData.append('rollNo',form.rollNo)
-      if(form.endYear.length!==0) playerData.append('branch',form.branch)
-      if(form.endYear.length!==0) playerData.append('startYear',form.startYear)
-      if(form.endYear.length!==0) playerData.append('endYear',form.endYear)
+      playerData.append('branch',form.branch)
+      playerData.append('startYear',form.startYear)
+      playerData.append('endYear',form.endYear)
       playerData.append('matches',form.matches)
       playerData.append('goals',form.goals)
       playerData.append('assists',form.assists)
@@ -85,14 +85,17 @@ export default function UpdatePlayer() {
       playerData.append('yellowCards',form.yellowCards)
       playerData.append('redCards',form.redCards)
       playerData.append('photo',playerPhoto)
+      
+      const res = await API.updatePlayer(id,playerData)
+      const data = res.data
 
-      const {data} = await API.updatePlayer(id,playerData)
-      if(data.success){
+      if(data?.success){
         toast.success('Player details updated')
         navigate('/player-list')
 
       }
     } catch (error) {
+      console.log(error)
       if(error.response.data.message) toast.error(error.response.data.message)
       else  toast.error('Something went wrong')
     }
@@ -112,7 +115,6 @@ export default function UpdatePlayer() {
     if(id)  fetchDetails(id);
   },[id])
 
-  console.log('photo',typeof playerPhoto)
   return (
     <PageLayout>
       <Row>
