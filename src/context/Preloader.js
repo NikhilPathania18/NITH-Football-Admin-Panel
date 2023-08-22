@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import { Box, Image, Heading } from "../components/elements";
 import PulseLoader from "react-spinners/PulseLoader";
+import nithLogo from '../images/nith-football-logo.png'
 
 export const LoaderContext = createContext();
 
@@ -16,7 +17,7 @@ export const LoaderProvider = ({ children }) => {
         <LoaderContext.Provider value={{ loading }}>
             { loading ? 
                 <Box className="mc-spinner">
-                    <Image src="images/logo.webp" aly="logo" />
+                    <Image src={nithLogo} aly="logo" />
                     <Box className="mc-spinner-group">
                         <Heading>Loading</Heading>
                         <PulseLoader 

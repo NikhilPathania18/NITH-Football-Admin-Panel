@@ -14,7 +14,6 @@ import { toast } from "react-toastify";
 import Multiselect from "multiselect-react-dropdown";
 export default function TeamView() {
     const id = useParams().id
-    console.log('id',id)
     const [form,setForm] = useState({
       name: "",
       type: "year",
@@ -36,7 +35,6 @@ export default function TeamView() {
           setForm(data.teamDetails)
           setPlayersList(data?.teamDetails?.players)
           setLogo(data?.teamDetails?.logo)
-          console.log(data.teamDetails.players)
         } catch (error) {
           console.log(error)
         }

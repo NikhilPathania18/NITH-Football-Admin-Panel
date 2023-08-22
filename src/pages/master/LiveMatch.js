@@ -33,6 +33,8 @@ export default function LiveMatch() {
 
   const [assister, setAssister] = useState([]);
 
+  const [loading, setLoading] = useState(false);
+
   const [event, setEvent] = useState({
     type: "goal",
     player: null,
@@ -59,14 +61,16 @@ export default function LiveMatch() {
   const endMatch = async() => {
     try {
         const confirm = window.confirm('Do you want to end Match?');
-        console.log('confirm',confirm)
+        if(!confirm)  return;
+        setLoading(true)
        const {data} = await API.endMatch(id);
-       console.log('data',data)
        if(data.success){
+        setLoading(false)
         toast.success('Match ended');
         navigate('/matches-list')
        }
     } catch (error) {
+        setLoading(false);
         if(error?.response?.data?.message)  toast.error(error.response.data.message)
         else    toast.error('Failed to end Match')
     }
@@ -74,7 +78,6 @@ export default function LiveMatch() {
 
   const handleSubmit = async () => {
     try {
-        console.log('event',event)
         if(player.length===0){
             toast.error('Please select Player')
             return;
@@ -82,18 +85,20 @@ export default function LiveMatch() {
         event.player = player[0]._id
         if(assister.length!==0) event.assist = assister[0]._id
 
+        setLoading(true)
         let data
         if(event.type === 'goal')
         data = (await API.updateScore(id, team, event)).data;
         else
         data = (await API.updateEvent(id,team,event)).data;
 
-        console.log('data',data)
+        setLoading(false)
         if(data.success)
         fetchData(id);
         resetForm();
         toast.success('Event added')
     } catch (error) {
+      setLoading(false)
       if (error?.response?.data?.message)
         toast.error(error.response.data.message);
       else toast.error("Something went wrong");
@@ -111,7 +116,6 @@ export default function LiveMatch() {
     try {
         let half;
         let status = matchDetails.currentStatus;
-        console.log('status',status)
         switch(status){
             case 'notStarted': half='firstHalf'; break;
             case 'firstHalf': half='halfTime'; break;
@@ -122,14 +126,16 @@ export default function LiveMatch() {
             case 'extraTimeHalfTime': half='extraTimeSecondHalf'; break;
             case 'extraTimeSecondHalf': half='penalties'; break;
         }
-        console.log('half',half)
+        setLoading(true);
         const {data} = await API.startMatch(id, half);
-        console.log(data)
         if(data.success){
             const res = await fetchData(id);
+            setLoading(false);
             toast.success('Half started/stopped')
         }
+        
     } catch (error) {
+        setLoading(false);
         if (error?.response?.data?.message)
         toast.error(error.response.data.message);
         else toast.error("Something went wrong");
@@ -244,10 +250,12 @@ export default function LiveMatch() {
             >
             <Text >{`Current Status: ${matchDetails.currentStatus}`}</Text>
             <Button
-              className={"mc-btn primary d-block m-auto"}
+              className={"mc-btn bg-green d-block m-auto"}
               icon={"verified"}
-              text={`Start Half`}
+              text={`${loading?'Loading...': 'Start Half'}`}
               onClick={startMatch}
+              disabled={loading}
+              style={{color: 'white', backgroundColor: 'green'}}
             />
           </CardLayout>
           }
@@ -260,8 +268,9 @@ export default function LiveMatch() {
             <Button
               className={"mc-btn btn btn-danger d-block m-auto"}
               icon={"cancel"}
-              text="End Half"
+              text={`${loading?'Loading...': 'End Half'}`}
               onClick={startMatch}
+              disabled={loading}
             />
           </CardLayout>
           }
@@ -273,7 +282,7 @@ export default function LiveMatch() {
                   name="type"
                   option={['goal','yellowCard','redCard','penaltyMissed']}
                   value={event.type}
-                  label="Select Team"
+                  label="Select Event"
                   fieldSize="w-100 h-md"
                   onChange = {(e)=>{setEvent({...event,[e.target.name]: e.target.value})}}
                 />
@@ -343,8 +352,9 @@ export default function LiveMatch() {
                 <Button
                   className={"mc-btn primary d-block m-auto"}
                   icon={"verified"}
-                  text="Add Event"
+                  text={`${loading?'Loading...': 'Add Event'}`}
                   onClick={handleSubmit}
+                  disabled={loading}
                 />
               </Col>
             </Row>
@@ -354,9 +364,11 @@ export default function LiveMatch() {
           >
             <Button
               className={"mc-btn btn btn-danger d-block m-auto"}
-              icon={"cancel"}
-              text="End Match"
+              icon={"verified"}
+              text={loading? 'Loading...': 'End Match'}
               onClick={endMatch}
+              disabled={loading}
+              // iconClass={'verified'}
             />
           </CardLayout>
         </PageLayout>

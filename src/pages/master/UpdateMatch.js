@@ -43,7 +43,6 @@ export default function UpdateMatch() {
                 setEnPostContent(data.en.content)
                 setArePostContent(data.are.content)
                 setCoverImage([data.image])
-                console.log(data);
             } catch (error) {
                 if(error.response.data.message)  toast.error(error.response.data.message)
                 else  toast.error('Failed to get Blog data')
@@ -94,7 +93,6 @@ export default function UpdateMatch() {
         imageData.append('image',image) 
         const {data} = await API.getImageLink(imageData)
         const imageUrl = data.image
-        console.log(imageUrl);
 
         const imageTag = `<img src="${imageUrl}" width="300px"  alt="Inserted Image" />`;
         const updatedContent = `${enPostContent}${imageTag}`;

@@ -6,6 +6,7 @@ import data from "../../data/master/login.json";
 import * as API from '../../api/auth'
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import nithLogo from '../../images/nith-football-logo.png'
 
 export default function Login() {
 
@@ -37,9 +38,9 @@ export default function Login() {
             e.preventDefault()
             const {data} = await API.login(form);
 
-            const user = data.data
+            const user = data?.user
 
-            if(!user.role||user.role!=='admin'){
+            if(!user){
                 toast.error('Admin Not Found')
                 resetForm();
                 return;
@@ -67,12 +68,12 @@ export default function Login() {
             />
             <Box className="mc-auth-group">
                 <Logo 
-                    src = { "https://img1.wsimg.com/isteam/ip/58ad9390-8c5c-4e8b-923a-343cf5238ee3/Logo%20-%20Transparent.png" }
+                    src = { nithLogo }
                     alt = { data?.logo.alt }
                     href = { data?.logo.path }
                     className = "mc-auth-logo" 
                 />
-                <Heading as="h4" className="mc-auth-title">{ 'Login to Ocealics' }</Heading>
+                <Heading as="h4" className="mc-auth-title">{ 'NITH Football Admin Panel' }</Heading>
                 <Form className="mc-auth-form" >
                     {data?.input.map((item, index) => (
                         <IconField 
@@ -89,7 +90,7 @@ export default function Login() {
                         />
                     ))}
                     <Button disabled={loading==='loading...'} onClick={handleSubmit} className={`mc-auth-btn ${data?.button.fieldSize}`} >{ loading }</Button>
-                    <Anchor className="mc-auth-forgot" href={ data?.forgot.path }>{ data?.forgot.text }</Anchor>
+                    {/* <Anchor className="mc-auth-forgot" href={ data?.forgot.path }>{ data?.forgot.text }</Anchor> */}
                     {/* <Box className="mc-auth-divide"><Text as="span">{ data?.divide.text }</Text></Box> */}
                     {/* <Box className="mc-auth-connect">
                         {data?.connect.map((item, index) => (

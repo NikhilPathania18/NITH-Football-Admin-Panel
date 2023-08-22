@@ -18,7 +18,7 @@ export default function ProfileDropdown({ name, username, image, dropdown , user
                 <DuelText title={ name } descrip={ username } size="xs" />
             </Dropdown.Toggle>
             <Dropdown.Menu align="end" className="mc-dropdown-paper">
-                {dropdown.map((item, index) => (
+                {/* {dropdown.map((item, index) => (
                     <Anchor
                         key={index}
                         href={item.path}
@@ -26,7 +26,7 @@ export default function ProfileDropdown({ name, username, image, dropdown , user
                         text={item.text}
                         className="mc-dropdown-menu"
                     />
-                ))}
+                ))} */}
                 <Anchor
                         key={2}
                         // href={item.path}

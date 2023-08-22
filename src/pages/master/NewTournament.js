@@ -57,7 +57,6 @@ export default function NewTournament() {
             try {
                 const {data} = await team.getTeamsList();
                 setAllTeams(data.teamsList)
-                console.log(data)
             } catch (error) {
                 console.log(error)
             }

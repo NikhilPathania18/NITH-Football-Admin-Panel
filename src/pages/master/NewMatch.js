@@ -105,14 +105,12 @@ export default function NewMatch() {
 
         const response = await player.playerList();
         const temp = [];
-        console.log("respnse", response.data.playersList);
         response.data.playersList.forEach((ele, index) => {
           temp.push({
             _id: ele._id,
             title: `${index + 1}. ${ele.name} (${ele.rollNo})`,
           });
         });
-        console.log(temp);
         setPlayers(temp);
       } catch (error) {
         console.log(error);
@@ -149,7 +147,6 @@ export default function NewMatch() {
       setForm({ ...temp });
 
       const { data } = await API.createMatch(form);
-      console.log(data);
       if (data.success) {
         toast.success("New match created");
         resetForm();
@@ -165,7 +162,6 @@ export default function NewMatch() {
     }
   };
 
-  console.log("players", selectedPlayersA);
   return (
     <PageLayout>
       <Row>

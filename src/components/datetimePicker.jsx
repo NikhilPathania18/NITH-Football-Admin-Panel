@@ -63,7 +63,6 @@ const DateTimePicker = ({slots, selectedDates, setSelectedDates, selectedTimes,s
     setCurrentDate(null);
     setSelectedTimes([]);
 
-    console.log(slots);
   };
 
   return (

@@ -33,7 +33,6 @@ export default function TournamentView() {
         try {
             const res = await API.getBoatDetails(id);
             const data = res.data.data
-            console.log(data);
             setForm({
                 enTitle: data.en.title,
                 enDesc: data.en.description,
