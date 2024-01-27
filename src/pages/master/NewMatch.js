@@ -344,40 +344,6 @@ export default function NewMatch() {
                   name="teamBPenalties"
                 />
               </Col>
-              {/* <Col xl={6}>
-                <Row>
-                  <Col xl={2}>
-                    <LabelField
-                      label="type"
-                      fieldSize="w-100 h-md"
-                      option={[
-                        "goal",
-                        "yellowCard",
-                        "redCard",
-                        "penaltyMissed",
-                      ]}
-                      value={form.teamBPenalties}
-                      onChange={handleChange}
-                      name={`type[]`}
-                    />
-                  </Col>
-                  <Col xl={2}>
-                    <LabelField
-                      type="number"
-                      label="time"
-                      fieldSize="w-100 h-md"
-                      value={form.teamBPenalties}
-                      onChange={handleChange}
-                      name={`type[]`}
-                    />
-                  </Col>
-                  <Col xl={3}>
-                  <Box className={'mc-label-field-group label-col'} >
-                    <Label text={'Select player'} />
-                  </Box>
-                  </Col>
-                </Row>
-              </Col> */} 
               <Col xl={12}>
                 <LabelField
                   label="match status"

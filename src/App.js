@@ -46,6 +46,8 @@ import NewTournament from "./pages/master/NewTournament";
 import TournamentList from "./pages/master/TournamentList";
 import TournamentView from "./pages/master/ViewTournament";
 import EditTournament from "./pages/master/EditTournament";
+import AddNews from "./pages/master/AddNews";
+import NewsList from "./pages/master/NewsList";
 
 export default function App() {
     return (
@@ -102,6 +104,9 @@ export default function App() {
                         <Route path="/faqs-list" element={<FaqList />} />
                         <Route path="/faq-view/:id" element={<FaqView />} />
                         <Route path="/edit-faq/:id" element={<EditFaq />} />
+
+                        <Route path="/new-news" element = {<AddNews />} />
+                        <Route path="/news-list" element = {<NewsList />} /> 
 
                         <Route path='/gallery' element={<Gallery />} />
                         <Route path='/edit-gallery' element={<EditGallery />} />

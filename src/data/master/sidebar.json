@@ -36,6 +36,14 @@
                         { "href": "/matches-list", "text": "matches list" },
                         { "href": "/new-match", "text": "new match"}
                     ]
+                },
+                {
+                    "icon": "feed",
+                    "text": "news",
+                    "submenu": [
+                        {"href": "/new-news", "text": "Add News"},
+                        {"href": "/news-list", "text": "News List"}
+                    ]
                 }
             ]
         }

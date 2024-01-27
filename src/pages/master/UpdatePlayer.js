@@ -59,7 +59,7 @@ export default function UpdatePlayer() {
   const [playerPhoto,setPlayerPhoto] = useState(null)
 
   const handleChange = (e) => {
-    setForm({...form,[e.target.name]:e.target.value})
+    setForm({...form,[e.target.name]: e.target.value})
   }
 
   const handleImageChange = (e) => {
@@ -86,9 +86,11 @@ export default function UpdatePlayer() {
       playerData.append('redCards',form.redCards)
       playerData.append('photo',playerPhoto)
       
+      console.log('player data', playerData )
       const res = await API.updatePlayer(id,playerData)
       const data = res.data
 
+      console.log(data)
       if(data?.success){
         toast.success('Player details updated')
         navigate('/player-list')
@@ -175,6 +177,16 @@ export default function UpdatePlayer() {
                   name="endYear"
                   onChange={handleChange}
                   value={form.endYear}
+                  fieldSize="w-100 h-md"
+                />
+              </Col>
+              <Col xl={12}>
+                <LabelField
+                  type="number"
+                  label="matches"
+                  name="matches"
+                  onChange={handleChange}
+                  value={form.matches}
                   fieldSize="w-100 h-md"
                 />
               </Col>
