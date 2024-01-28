@@ -52,6 +52,7 @@ export default function NewMatch() {
     teamAPenalties: 0,
     teamBPenalties: 0,
     status: "upcoming",
+    time: "4:30 PM"
   });
 
   const resetForm = () => {
@@ -74,6 +75,7 @@ export default function NewMatch() {
       teamAPenalties: 0,
       teamBPenalties: 0,
       status: "upcoming",
+      time: "4:30 PM"
     });
   };
 
@@ -192,12 +194,12 @@ export default function NewMatch() {
               </Col>
               <Col xl={6}>
                 <LabelField
-                  type="number"
-                  label="match number"
+                  type="text"
+                  label="match time"
                   fieldSize="w-100 h-md"
-                  value={form.matchNumber}
+                  value={form.time}
                   onChange={handleChange}
-                  name="matchNumber"
+                  name="time"
                 />
               </Col>
               <Col xl={6}>
