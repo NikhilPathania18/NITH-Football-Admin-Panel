@@ -95,6 +95,36 @@ export default function NewMatch() {
 
   const [teamAEvents, setTeamAEvents] = useState([]);
   const [teamBEvents, setTeamBEvents] = useState([]);
+
+  useEffect(()=>{
+    if(selectedTeamA.length!==0){
+      const TeamA = teams.find(obj => obj._id === selectedTeamA[0]._id)
+      const TeamAPlayers = TeamA.players
+
+      const temp = [];
+        TeamAPlayers.forEach((ele, index) => {
+          temp.push({
+            _id: ele._id,
+            title: `${index + 1}. ${ele.name} (${ele.rollNo})`,
+          });
+        });
+        setSelectedPlayersA(temp);
+    }
+
+    if(selectedTeamB.length!==0){
+      const TeamB = teams.find(obj => obj._id === selectedTeamB[0]._id)
+      const TeamBPlayers = TeamB.players
+
+      const temp = [];
+        TeamBPlayers.forEach((ele, index) => {
+          temp.push({
+            _id: ele._id,
+            title: `${index + 1}. ${ele.name} (${ele.rollNo})`,
+          });
+        });
+        setSelectedPlayersB(temp);
+    }
+  },[selectedTeamA, selectedTeamB])
   
   useEffect(() => {
     const fetchData = async () => {
@@ -104,6 +134,7 @@ export default function NewMatch() {
 
         const res = await team.getTeamsList();
         setTeams(res.data.teamsList);
+        console.log(res.data.teamsList)
 
         const response = await player.playerList();
         const temp = [];
