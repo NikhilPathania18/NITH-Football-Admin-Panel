@@ -52,7 +52,8 @@ export default function NewMatch() {
     teamAPenalties: 0,
     teamBPenalties: 0,
     status: "upcoming",
-    time: "4:30 PM"
+    time: "4:30 PM",
+    isKnockout: false,
   });
 
   const resetForm = () => {
@@ -75,7 +76,8 @@ export default function NewMatch() {
       teamAPenalties: 0,
       teamBPenalties: 0,
       status: "upcoming",
-      time: "4:30 PM"
+      time: "4:30 PM",
+      isKnockout: false,
     });
   };
 
@@ -177,8 +179,11 @@ export default function NewMatch() {
       selectedPlayersB.forEach((plr) => {
         if (!temp.teamB.includes(plr._id)) temp.playersB.push(plr._id);
       });
-      setForm({ ...temp });
+      temp.isKnockout = form.isKnockout == "Yes" ? true : form.isKnockout == "No" ? false : form.isKnockout;
 
+      setForm({ ...temp });
+      
+      console.log('form', form);
       const { data } = await API.createMatch(form);
       if (data.success) {
         toast.success("New match created");
@@ -339,6 +344,26 @@ export default function NewMatch() {
               </Col>
               <Col xl={6}>
                 <LabelField
+                  label="match status"
+                  fieldSize="w-100 h-md"
+                  option={["upcoming", "ongoing", "ended"]}
+                  value={form.status}
+                  onChange={handleChange}
+                  name="status"
+                />
+              </Col>
+              <Col xl={6}>
+                <LabelField
+                  label="Is Knockout?"
+                  fieldSize="w-100 h-md"
+                  option={["Yes", "No"]}
+                  value={form.isKnockout === true ? "Yes" : form.isKnockout === false ? "No" : form.isKnockout}
+                  onChange={handleChange}
+                  name="isKnockout"
+                />
+              </Col>
+              <Col xl={6}>
+                <LabelField
                   type="number"
                   label="Team A Score"
                   fieldSize="w-100 h-md"
@@ -377,16 +402,7 @@ export default function NewMatch() {
                   name="teamBPenalties"
                 />
               </Col>
-              <Col xl={12}>
-                <LabelField
-                  label="match status"
-                  fieldSize="w-100 h-md"
-                  option={["upcoming", "ongoing", "ended"]}
-                  value={form.status}
-                  onChange={handleChange}
-                  name="status"
-                />
-              </Col>
+              
             </Row>
           </CardLayout>
         </Col>
