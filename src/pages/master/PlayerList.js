@@ -13,80 +13,59 @@ import { toast } from "react-toastify";
 export default function PlayerList() {
   const [playerData, setPlayerData] = useState([]);
   const [selectedPlayers, setSelectedPlayers] = useState([]);
+  const [filterString, setFilterString] = useState('');
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await API.playerList();
-        setPlayerData(data.playersList);
-        setSelectedPlayers(data.playersList);
+        const response = await API.playerList();
+        setPlayerData(response.data.playersList);
+        setSelectedPlayers(response.data.playersList);
       } catch (error) {
-        if (error?.response?.data?.message)
+        if (error?.response?.data?.message) {
           toast.error(error.response.data.message);
-        else toast.error("Failed to fetch player list");
+        } else {
+          toast.error("Failed to fetch player list");
+        }
       }
     };
     fetchData();
   }, []);
 
-  const [filterYear,setFilterYear] = useState(null)
-  const [filterBranch,setFilterBranch] = useState('all')
+  const filterPlayers = (str) => {
+    setFilterString(str);
+    if (!str) {
+      setSelectedPlayers(playerData);
+    } else {
+      str = str.toLowerCase();
+      const filteredArray = playerData.filter(
+        (player) =>
+          player.name.toLowerCase().includes(str) ||
+          player.rollNo.toLowerCase().includes(str)
+      );
+      setSelectedPlayers(filteredArray);
+    }
+  };
 
-  // useEffect(() => {
-  //   let tempArray = selectedPlayers;
-  //   if(filterYear==null){
-  //     temp
-  //   }
-  // }, [filterYear,filterBranch]);
   return (
     <PageLayout>
       <Row>
         <Col xl={12}>
           <CardLayout>
-            <Breadcrumb title={'Players List'}>
-              {/* {data?.breadcrumb.map((item, index) => (
-                <li key={index} className="mc-breadcrumb-item">
-                  {item.path ? (
-                    <Anchor className="mc-breadcrumb-link" href={item.path}>
-                      {item.text}
-                    </Anchor>
-                  ) : (
-                    item.text
-                  )}
-                </li>
-              ))} */}
+            <Breadcrumb title={"Players List"}>
+              {/* Your breadcrumb items */}
             </Breadcrumb>
           </CardLayout>
         </Col>
-        {/* {data?.float.map((item, index) => (
-                    <Col key={ index } sm={6} lg={4}>
-                        <FloatCard 
-                            variant = { item.variant }
-                            digit = { item.digit }
-                            title = { item.title }
-                            icon = { item.icon }
-                        />
-                    </Col>
-                ))} */}
         <Col xl={12}>
           <CardLayout>
             <Row>
-              <Col xs={12} sm={6} md={4} lg={3} >
+              <Col xs={12} sm={6} md={6} lg={6}>
                 <LabelField
-                  type = {Number}
-                  label={'Year'}
-                  value = {filterYear}
-                  onChange = {(e)=>{setFilterYear(e.target.value)}}
-                  labelDir="label-col"
-                  fieldSize="w-100 h-md"
-                />
-              </Col>
-              <Col xs={12} sm={6} md={4} lg={3} >
-                <LabelField
-                  // type = { item.type }
-                  label={'Branch'}
-                  option={['all','cse','electrical','civil','ece','architecture','ep','mnc','mechanical','material','chemical']}
-                  value = {filterBranch}
-                  onChange = {(e)=>{setFilterBranch(e.target.value)}}
+                  type={"text"}
+                  label={"Enter Name or Roll Number"}
+                  value={filterString}
+                  onChange={(e) => filterPlayers(e.target.value)}
                   labelDir="label-col"
                   fieldSize="w-100 h-md"
                 />
